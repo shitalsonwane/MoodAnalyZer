@@ -15,4 +15,9 @@ public class TestMoodAnalyser {
         MoodAnalyser MoodAnalyserObj=new MoodAnalyser("i am in any mood");
         Assert.assertEquals("HAPPY",MoodAnalyserObj.analyseMood());
     }
+    @Test
+    public void givenNull_whenResponse_thenHappy() {
+        MoodAnalyser MoodAnalyserObj=new MoodAnalyser(null);
+        Assert.assertEquals("HAPPY",MoodAnalyserObj.analyseMood());
+    }
 }
