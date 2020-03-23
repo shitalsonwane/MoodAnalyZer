@@ -6,13 +6,13 @@ public class TestMoodAnalyser {
 
     @Test
     public void givenMessage_whenResponse_thenSad() {
-        String result=MoodAnalyserObj.analyseMood("I am in sad Mood");
-        Assert.assertEquals("SAD",result);
+        MoodAnalyser MoodAnalyserObj=new MoodAnalyser("i am in sad mood");
+        Assert.assertEquals("SAD",MoodAnalyserObj.analyseMood());
     }
 
     @Test
     public void givenMessage_whenReaponse_thenHappy() {
-        String result=MoodAnalyserObj.analyseMood("i am in any mood");
-        Assert.assertEquals("HAPPY",result);
+        MoodAnalyser MoodAnalyserObj=new MoodAnalyser("i am in any mood");
+        Assert.assertEquals("HAPPY",MoodAnalyserObj.analyseMood());
     }
 }
