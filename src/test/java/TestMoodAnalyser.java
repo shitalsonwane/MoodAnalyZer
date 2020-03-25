@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+
 public class TestMoodAnalyser {
     MoodAnalyser MoodAnalyserObj=new MoodAnalyser();
 
@@ -35,5 +37,13 @@ public class TestMoodAnalyser {
         {
             Assert.assertEquals(MoodAnalysisException.UserDefinedDataType.EMPTY_EXCEPTION,e.userDefinedObject);
         }
+    }
+    @Test
+    public void givenObject_WhenEquals_ThenTrue() throws MoodAnalysisException {
+        MoodAnalyser MoodAnalyserObj = new MoodAnalyser();
+        Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyser");
+        MoodAnalyser moodAnalyserObject = MoodAnalyserFactory.createMoodAnalyserObject(constructor);
+        boolean result = MoodAnalyserObj.equals(moodAnalyserObject);
+        Assert.assertTrue("true",result);
     }
 }
