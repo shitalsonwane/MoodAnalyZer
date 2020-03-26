@@ -2,16 +2,16 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory {
-        public static Constructor getConstructor(String className) throws MoodAnalysisException {
-            try {
+    public static Constructor getConstructor(String className, Class... parameter) throws MoodAnalysisException {
+        try {
                 Class<?> moodAnalyserClass = Class.forName(className);
-                return  moodAnalyserClass.getConstructor();
+                return  moodAnalyserClass.getConstructor(parameter);
             } catch (ClassNotFoundException e) {
                 throw new MoodAnalysisException("Class not found",MoodAnalysisException.UserDefinedDataType.NO_SUCH_CLASS);
             } catch (NoSuchMethodException e) {
-                e.printStackTrace();
+                throw new MoodAnalysisException("Method not found",MoodAnalysisException.UserDefinedDataType.NO_SUCH_METHOD);
             }
-            return null;
+
         }
 
         public static MoodAnalyser createMoodAnalyserObject(Constructor constructor) throws  MoodAnalysisException {
@@ -26,4 +26,4 @@ public class MoodAnalyserFactory {
             }
             return null;
         }
-    }
+   }
