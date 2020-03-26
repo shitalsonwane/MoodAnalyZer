@@ -44,14 +44,14 @@ public class MoodAnalyserFactory {
         }
         return null;
     }
-    public static void moodAnalyserField(Object object, String message, String fieldValue) {
+    public static void moodAnalyserField(Object object, String message, String fieldValue) throws MoodAnalysisException{
 
         try {
             Class<?> classObject = object.getClass();
             Field declaredField = classObject.getDeclaredField(message);
             declaredField.set(object,fieldValue);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("Field not found",MoodAnalysisException.UserDefinedDataType.NO_SUCH_FIELD);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
