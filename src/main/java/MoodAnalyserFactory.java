@@ -7,7 +7,7 @@ public class MoodAnalyserFactory {
                 Class<?> moodAnalyserClass = Class.forName(className);
                 return  moodAnalyserClass.getConstructor();
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                throw new MoodAnalysisException("Class not found",MoodAnalysisException.UserDefinedDataType.NO_SUCH_CLASS);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             }
