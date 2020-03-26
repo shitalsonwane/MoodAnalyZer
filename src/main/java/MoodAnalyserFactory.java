@@ -14,10 +14,11 @@ public class MoodAnalyserFactory {
 
         }
 
-        public static MoodAnalyser createMoodAnalyserObject(Constructor constructor) throws  MoodAnalysisException {
-            try {
-                return (MoodAnalyser) constructor.newInstance();
-            } catch (InstantiationException e) {
+    public static MoodAnalyser createMoodAnalyserObject(Constructor constructor,Object... objects) throws  MoodAnalysisException {
+        try {
+            return (MoodAnalyser) constructor.newInstance(objects);
+             }
+            catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
