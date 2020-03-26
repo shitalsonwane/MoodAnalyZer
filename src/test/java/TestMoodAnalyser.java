@@ -133,5 +133,16 @@ public class TestMoodAnalyser {
             Assert.assertEquals(MoodAnalysisException.UserDefinedDataType.NO_SUCH_FIELD,e.userDefinedObject);
         }
     }
+    @Test
+    public void givenNullMessage_whenProper_ShouldThrowException() {
+        try {
+            Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyser");
+            MoodAnalyser object = MoodAnalyserFactory.createMoodAnalyserObject(constructor);
+            MoodAnalyserFactory.moodAnalyserField(object,"message",null);
+            Object mood = MoodAnalyserFactory.invokeMethod(object, "analyseMood");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.UserDefinedDataType.INVOCATION_TARGET_EXCEPTION,e.userDefinedObject);
+        }
+    }
 }
 

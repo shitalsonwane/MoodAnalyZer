@@ -45,7 +45,6 @@ public class MoodAnalyserFactory {
         return null;
     }
     public static void moodAnalyserField(Object object, String message, String fieldValue) throws MoodAnalysisException{
-
         try {
             Class<?> classObject = object.getClass();
             Field declaredField = classObject.getDeclaredField(message);
@@ -53,7 +52,8 @@ public class MoodAnalyserFactory {
         } catch (NoSuchFieldException e) {
             throw new MoodAnalysisException("Field not found",MoodAnalysisException.UserDefinedDataType.NO_SUCH_FIELD);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("Message should not be null",MoodAnalysisException.UserDefinedDataType.ILLEGAL_ACCESS_EXCEPTION);
         }
     }
+
 }
